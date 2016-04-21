@@ -1,13 +1,13 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin Core developers
+// Copyright (c) 2009-2015 The NoirShares Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_MAIN_H
-#define BITCOIN_MAIN_H
+#ifndef NOIRSHARES_MAIN_H
+#define NOIRSHARES_MAIN_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/bitcoin-config.h"
+#include "config/noirshares-config.h"
 #endif
 
 #include "amount.h"
@@ -41,6 +41,8 @@ class CValidationState;
 
 struct CNodeStateStats;
 struct LockPoints;
+
+#define DEV_ADDRESS	"08226e8d382b07d2cfe02c678937c82275b960aa" //full miner participation
 
 /** Default for DEFAULT_WHITELISTRELAY. */
 static const bool DEFAULT_WHITELISTRELAY = true;
@@ -139,6 +141,7 @@ struct BlockHasher
 };
 
 extern CScript COINBASE_FLAGS;
+extern CScript DEV_SCRIPT;
 extern CCriticalSection cs_main;
 extern CTxMemPool mempool;
 typedef boost::unordered_map<uint256, CBlockIndex*, BlockHasher> BlockMap;
@@ -574,4 +577,4 @@ static const unsigned int REJECT_ALREADY_KNOWN = 0x101;
 /** Transaction conflicts with a transaction already known */
 static const unsigned int REJECT_CONFLICT = 0x102;
 
-#endif // BITCOIN_MAIN_H
+#endif // NOIRSHARES_MAIN_H

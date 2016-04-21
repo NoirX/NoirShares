@@ -1,9 +1,9 @@
-// Copyright (c) 2012-2014 The Bitcoin Core developers
+// Copyright (c) 2012-2014 The NoirShares Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_VERSION_H
-#define BITCOIN_VERSION_H
+#ifndef NOIRSHARES_VERSION_H
+#define NOIRSHARES_VERSION_H
 
 /**
  * network protocol versioning
@@ -39,4 +39,4 @@ static const int SENDHEADERS_VERSION = 70012;
 //! "feefilter" tells peers to filter invs to you by fee starts with this version
 static const int FEEFILTER_VERSION = 70013;
 
-#endif // BITCOIN_VERSION_H
+#endif // NOIRSHARES_VERSION_H

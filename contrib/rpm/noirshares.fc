@@ -1,0 +1,8 @@
+/usr/bin/noirshares-cli		--	gen_context(system_u:object_r:noirshares_exec_t,s0)
+/usr/sbin/noirsharesd		--	gen_context(system_u:object_r:noirshares_exec_t,s0)
+/usr/lib(64)?/noirshares/noirsharesd		--	gen_context(system_u:object_r:noirshares_exec_t,s0)
+
+/etc/noirshares(/.*)?		gen_context(system_u:object_r:noirshares_conf_t,s0)
+/var/lib/noirshares(/.*)?		gen_context(system_u:object_r:noirshares_var_lib_t,s0)
+
+(/var)?/run/noirsharesd(/.*)?   gen_context(system_u:object_r:noirshares_var_run_t,s0)

@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  noirsharesd The noirshares core server.
+#
+#
+# chkconfig: 345 80 20
+# description: noirsharesd
+# processname: noirsharesd
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/noirsharesd, see below
+if [ -f /etc/sysconfig/noirsharesd ]; then
+        . /etc/sysconfig/noirsharesd
+fi
+
+RETVAL=0
+
+prog=noirsharesd
+# you can override the lockfile via NOIRSHARESD_LOCKFILE in /etc/sysconfig/noirsharesd
+lockfile=${NOIRSHARESD_LOCKFILE-/var/lock/subsys/noirsharesd}
+
+# noirsharesd defaults to /usr/bin/noirsharesd, override with NOIRSHARESD_BIN
+noirsharesd=${NOIRSHARESD_BIN-/usr/bin/noirsharesd}
+
+# noirsharesd opts default to -disablewallet, override with NOIRSHARESD_OPTS
+noirsharesd_opts=${NOIRSHARESD_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $noirsharesd $noirsharesd_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

@@ -1,0 +1,22 @@
+[Unit]
+Description=NoirShares's distributed currency daemon
+After=network.target
+
+[Service]
+User=noirshares
+Group=noirshares
+
+Type=forking
+PIDFile=/var/lib/noirsharesd/noirsharesd.pid
+ExecStart=/usr/bin/noirsharesd -daemon -pid=/var/lib/noirsharesd/noirsharesd.pid \
+-conf=/etc/noirshares/noirshares.conf -datadir=/var/lib/noirsharesd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

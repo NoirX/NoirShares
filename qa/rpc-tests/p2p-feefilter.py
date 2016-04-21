@@ -1,11 +1,11 @@
 #!/usr/bin/env python2
-# Copyright (c) 2016 The Bitcoin Core developers
+# Copyright (c) 2016 The NoirShares Core developers
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #
 
 from test_framework.mininode import *
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import NoirSharesTestFramework
 from test_framework.util import *
 import time
 
@@ -45,7 +45,7 @@ class TestNode(SingleNodeConnCB):
         self.send_message(msg_feefilter(feerate))
         self.sync_with_ping()
 
-class FeeFilterTest(BitcoinTestFramework):
+class FeeFilterTest(NoirSharesTestFramework):
     def setup_network(self):
         # Node1 will be used to generate txs which should be relayed from Node0
         # to our test node
